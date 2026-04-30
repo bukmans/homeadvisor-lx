@@ -1,7 +1,9 @@
 import { CLAUDE_API_KEY, CLAUDE_MODEL, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from './config'
 
 // ─── CLAUDE API ───────────────────────────────────────────────────────────────
-const ANTHROPIC_URL = '/api/claude'
+const ANTHROPIC_URL = import.meta.env.DEV
+  ? '/api/claude'
+  : 'https://api.anthropic.com/v1/messages'
 
 export async function callClaude({ system, messages, maxTokens = 500 }) {
   if (!CLAUDE_API_KEY) {
