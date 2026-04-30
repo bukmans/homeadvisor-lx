@@ -2,8 +2,7 @@
 // Set these in your .env file (local) or Vercel/Netlify environment variables
 // NEVER commit your actual API key to GitHub
 
-export const CLAUDE_API_KEY = import.meta.env.VITE_CLAUDE_API_KEY || ''
-export const CLAUDE_MODEL   = 'claude-sonnet-4-20250514'
+export const CLAUDE_MODEL = 'claude-sonnet-4-20250514'
 
 // EmailJS configuration — get free credentials at https://emailjs.com
 export const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID'

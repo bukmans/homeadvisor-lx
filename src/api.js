@@ -1,21 +1,11 @@
-import { CLAUDE_API_KEY, CLAUDE_MODEL, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from './config'
+import { CLAUDE_MODEL, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from './config'
 
 // ─── CLAUDE API ───────────────────────────────────────────────────────────────
-const ANTHROPIC_URL = import.meta.env.DEV
-  ? '/api/claude'
-  : 'https://api.anthropic.com/v1/messages'
-
 export async function callClaude({ system, messages, maxTokens = 500 }) {
-  if (!CLAUDE_API_KEY) {
-    throw new Error('CLAUDE_API_KEY not set. Add VITE_CLAUDE_API_KEY to your .env file.')
-  }
-  const response = await fetch(ANTHROPIC_URL, {
+  const response = await fetch('/api/claude', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': CLAUDE_API_KEY,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
     },
     body: JSON.stringify({
       model: CLAUDE_MODEL,
