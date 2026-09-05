@@ -46,7 +46,7 @@ export default function TabAdvisor({ profile, updateProfile, onComplete }) {
       const displayText = reply.replace(/\{"EXTRACTED":\{.*?\}\}/s, '').trim()
 
       setMessages(prev => [...prev, { role: 'assistant', text: displayText }])
-      historyRef.current = [...historyRef.current, { role: 'assistant', content: reply }]
+      historyRef.current = [...historyRef.current, { role: 'assistant', content: displayText }]
 
       if (jsonMatch) {
         try {
