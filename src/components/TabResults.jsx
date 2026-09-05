@@ -14,7 +14,7 @@ export default function TabResults({ profile, results, narrative, setNarrative, 
     narrativeRun.current = true
     generateNarrative(profile, r)
       .then(text => setNarrative(text))
-      .catch(() => setNarrative('AI narrative unavailable — ensure VITE_CLAUDE_API_KEY is set. Your numerical analysis above provides the complete picture.'))
+      .catch(() => setNarrative('AI narrative unavailable — ensure CLAUDE_API_KEY is configured in Vercel environment variables. Your numerical analysis above provides the complete picture.'))
   }, [profile, r, narrative, setNarrative])
 
   const dtiGrossClamped = Math.min(r.dtiGross, 98)
