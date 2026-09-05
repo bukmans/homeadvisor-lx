@@ -8,6 +8,20 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'CLAUDE_API_KEY is not configured on the server.' })
   }
 
+  // Vercel does not auto-parse the body — read and parse it manually
+  let body
+  try {
+    const raw = await new Promise((resolve, reject) => {
+      let data = ''
+      req.on('data', chunk => { data += chunk })
+      req.on('end', () => resolve(data))
+      req.on('error', reject)
+    })
+    body = JSON.parse(raw)
+  } catch {
+    return res.status(400).json({ error: 'Invalid JSON body' })
+  }
+
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -16,7 +30,7 @@ export default async function handler(req, res) {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify(req.body),
+      body: JSON.stringify(body),
     })
 
     const data = await response.json()
