@@ -21,10 +21,7 @@ export async function callClaude({ system, messages, maxTokens = 500 }) {
     throw new Error(err?.error?.message || `API error ${response.status}`)
   }
   const data = await response.json()
-  if (data.type === 'error' || !data.content) {
-    throw new Error(data.error?.message || 'Empty response from Claude API')
-  }
-  return data.content[0]?.text || ''
+  return data.content?.[0]?.text || ''
 }
 
 // ─── SYSTEM PROMPTS ───────────────────────────────────────────────────────────

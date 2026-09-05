@@ -46,7 +46,7 @@ export default function TabAdvisor({ profile, updateProfile, onComplete }) {
       const displayText = reply.replace(/\{"EXTRACTED":\{.*?\}\}/s, '').trim()
 
       setMessages(prev => [...prev, { role: 'assistant', text: displayText }])
-      historyRef.current = [...historyRef.current, { role: 'assistant', content: displayText }]
+      historyRef.current = [...historyRef.current, { role: 'assistant', content: reply }]
 
       if (jsonMatch) {
         try {
@@ -94,7 +94,7 @@ export default function TabAdvisor({ profile, updateProfile, onComplete }) {
 
       {apiError && (
         <div className="info-box" style={{ borderLeftColor: 'var(--red)', background: '#FEF2F2' }}>
-          ⚠️ <strong>API Configuration:</strong> {apiError}. Add <code>CLAUDE_API_KEY=your_key</code> to your Vercel environment variables.
+          ⚠️ <strong>API Configuration:</strong> {apiError}. Add <code>VITE_CLAUDE_API_KEY=your_key</code> to your <code>.env</code> file and restart the dev server.
         </div>
       )}
 
