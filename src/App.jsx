@@ -57,11 +57,11 @@ export default function App() {
       {/* ── Header ── */}
       <header className="app-header">
         <div className="header-inner">
-          <span className="header-badge">Luxembourg · 2026 · AI-Powered</span>
-          <h1 className="header-title">HomeAdvisor <em>LX</em></h1>
-          <p className="header-sub">Intelligent Home Purchase Advisor — Powered by Claude AI</p>
+          <span className="header-badge">Luxembourg · September 2026</span>
+          <h1 className="header-title">Immo<em>·LX</em></h1>
+          <p className="header-sub">Luxembourg Home Purchase Advisor — Benefits, Mortgage & Financial Simulation</p>
           <div className="header-pills">
-            {['Conversational AI', 'Benefits Engine', 'AI Narrative', 'Auto Report', 'Email Automation'].map(p => (
+            {['Bëllegen Akt', 'Capital Grant', 'Interest Subsidy', 'State Guarantee', 'Mortgage Simulation'].map(p => (
               <span key={p} className="pill"><span className="pill-dot" />{p}</span>
             ))}
           </div>
@@ -132,9 +132,9 @@ export default function App() {
 
         {/* ── Footer ── */}
         <footer className="app-footer">
-          HomeAdvisor LX · Powered by Claude AI (Anthropic) · Built for Luxembourg residents · 2026<br />
-          Benefits data from guichet.public.lu &amp; logement.lu · For information only — not financial advice<br />
-          Interest rates based on Banque Centrale du Luxembourg data, April 2026
+          Immo·LX · Luxembourg Home Purchase Advisor · 2026<br />
+          Benefits &amp; eligibility data: guichet.public.lu · logement.lu · Ministère du Logement<br />
+          For information purposes only — not financial or legal advice · Always verify with a licensed notary or mortgage adviser
         </footer>
       </main>
     </div>
